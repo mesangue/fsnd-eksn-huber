@@ -1,17 +1,9 @@
 FROM python:3.7-stretch
-# Defines image format (stretch, as per instructions)
 
 COPY . /app
 WORKDIR /app
-# Working directory
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-# Install dependencies
-
-EXPOSE 8080
 
 ENTRYPOINT ["gunicorn", "-b", ":8080", "main:APP"]
-#	Above as per Lesson2
-#		ENTRYPOINT ["python", "main.py"]
-# 		Define entry point (note language and filename)
